@@ -1,0 +1,1 @@
+This webapp is to help study for the Beer Judge Certification Program (BJCP) course www.bjcp.org
