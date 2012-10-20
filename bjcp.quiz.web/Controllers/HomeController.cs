@@ -15,7 +15,7 @@ namespace bjcp.quiz.web.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Contact()
         {
             return View();
         }

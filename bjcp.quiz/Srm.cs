@@ -53,5 +53,33 @@ namespace bjcp.quiz
                 return String.Format("{0} - {1}, {2}", Name, Low, High);
             }
         }
+
+        public static List<Srm> GetOrderedListOfSrm()
+        {
+            var srms = new List<Srm>();
+            srms.Add(new Srm("Straw", 2, 3));
+            srms.Add(new Srm("Yellow", 3, 4));
+            srms.Add(new Srm("Gold", 5, 6));
+            srms.Add(new Srm("Amber", 6, 9));
+            srms.Add(new Srm("Deep Amber/Light Copper", 10, 14));
+            srms.Add(new Srm("Copper", 14, 17));
+            srms.Add(new Srm("Deep Copper/Light Brown", 17, 18));
+            srms.Add(new Srm("Brown", 19, 22));
+            srms.Add(new Srm("Dark Brown", 22, 30));
+            srms.Add(new Srm("Very Dark Brown", 30, 35));
+            srms.Add(new Srm("Black", 30));
+            srms.Add(new Srm("Black, Opaque", 40));
+
+            return srms;
+        }
+        
+        public static List<Srm> GetQuiz()
+        {
+            var quiz = GetOrderedListOfSrm();
+            quiz.ForEach(srm => srm.Name = "");
+            return quiz;
+        }
     }
+
+
 }
