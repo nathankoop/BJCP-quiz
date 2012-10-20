@@ -7,6 +7,7 @@ namespace bjcp.quiz
 {
     public class Srm:ICloneable
     {
+        public Srm() { }
         public string Name { get; set; }
         public int Low { get; set; }
         public int? High { get; set; }
@@ -30,6 +31,11 @@ namespace bjcp.quiz
 
         public bool Equals(Srm srm)
         {
+            if (srm == null)
+                return false;
+            if (srm.Name == null)
+                return false;
+
             return 
                 this.Name.ToLowerInvariant() == srm.Name.ToLowerInvariant() &&
                 this.High == srm.High &&
@@ -54,7 +60,7 @@ namespace bjcp.quiz
             }
         }
 
-        public static List<Srm> GetOrderedListOfSrm()
+        public static List<Srm> GetMasterSrms()
         {
             var srms = new List<Srm>();
             srms.Add(new Srm("Straw", 2, 3));
@@ -75,7 +81,7 @@ namespace bjcp.quiz
         
         public static List<Srm> GetQuiz()
         {
-            var quiz = GetOrderedListOfSrm();
+            var quiz = GetMasterSrms();
             quiz.ForEach(srm => srm.Name = "");
             return quiz;
         }

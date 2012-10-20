@@ -13,7 +13,7 @@ namespace bjcp.quiz.tests
         [SetUp]
         public void Setup()
         {
-            var orderedSrms = Srm.GetOrderedListOfSrm();
+            var orderedSrms = Srm.GetMasterSrms();
             comparer = new SrmComparer(orderedSrms);
         }
 
@@ -33,6 +33,21 @@ namespace bjcp.quiz.tests
             Assert.AreEqual("Yellow", yellow.Name);
             Assert.AreEqual(3, yellow.Low);
             Assert.AreEqual(4, yellow.High);
+        }
+
+        [Test]
+        public void srm_null_equalsFalse()
+        {
+            var yellow = new Srm("Yellow", 3, 4);
+            Srm nullSrm = null;
+            Assert.IsFalse(yellow.Equals(nullSrm));
+        }
+        [Test]
+        public void srm_empty_equalsFalse()
+        {
+            var yellow = new Srm("Yellow", 3, 4);
+            var empty = new Srm();
+            Assert.IsFalse(yellow.Equals(empty));
         }
 
         [Test]
@@ -68,25 +83,25 @@ namespace bjcp.quiz.tests
         [Test]
         public void srmComparer_whenIncorrectOrder_returnsFalse()
         {
-            comparer.SrmItems = GetUnorderedListofSrm();
+            comparer.QuizSrms = GetUnorderedListofSrm();
             Assert.AreEqual(false, comparer.IsCorrect());
         }
 
         [Test]
         public void srmComparer_whenCorrectOrder_returnsTrue()
         {
-            comparer.SrmItems.Add(new Srm("Straw", 2, 3));
-            comparer.SrmItems.Add(new Srm("Yellow", 3, 4));
-            comparer.SrmItems.Add(new Srm("Gold", 5, 6));
-            comparer.SrmItems.Add(new Srm("Amber", 6, 9));
-            comparer.SrmItems.Add(new Srm("Deep Amber/Light Copper", 10, 14));
-            comparer.SrmItems.Add(new Srm("Copper", 14, 17));
-            comparer.SrmItems.Add(new Srm("Deep Copper/Light Brown", 17, 18));
-            comparer.SrmItems.Add(new Srm("Brown", 19, 22));
-            comparer.SrmItems.Add(new Srm("Dark Brown", 22, 30));
-            comparer.SrmItems.Add(new Srm("Very Dark Brown", 30, 35));
-            comparer.SrmItems.Add(new Srm("Black", 30));
-            comparer.SrmItems.Add(new Srm("Black, Opaque", 40));
+            comparer.QuizSrms.Add(new Srm("Straw", 2, 3));
+            comparer.QuizSrms.Add(new Srm("Yellow", 3, 4));
+            comparer.QuizSrms.Add(new Srm("Gold", 5, 6));
+            comparer.QuizSrms.Add(new Srm("Amber", 6, 9));
+            comparer.QuizSrms.Add(new Srm("Deep Amber/Light Copper", 10, 14));
+            comparer.QuizSrms.Add(new Srm("Copper", 14, 17));
+            comparer.QuizSrms.Add(new Srm("Deep Copper/Light Brown", 17, 18));
+            comparer.QuizSrms.Add(new Srm("Brown", 19, 22));
+            comparer.QuizSrms.Add(new Srm("Dark Brown", 22, 30));
+            comparer.QuizSrms.Add(new Srm("Very Dark Brown", 30, 35));
+            comparer.QuizSrms.Add(new Srm("Black", 30));
+            comparer.QuizSrms.Add(new Srm("Black, Opaque", 40));
             Assert.IsTrue(comparer.IsCorrect());
         }
 
@@ -106,7 +121,7 @@ namespace bjcp.quiz.tests
             srms.Add(new Srm("Very Dark Brown", 30, 35));
             srms.Add(new Srm("Black", 30));
             srms.Add(new Srm("Black, Opaque", 40));
-            comparer.SrmItems = srms;
+            comparer.QuizSrms = srms;
             Assert.AreEqual(false, comparer.IsCorrect());
         }
 

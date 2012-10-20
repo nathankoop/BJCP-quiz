@@ -16,6 +16,16 @@ namespace bjcp.quiz.web.Controllers
         {
             var quiz = new SrmQuizViewModel();
             quiz.UserSrms = Srm.GetQuiz();
+            quiz.Message = "";
+            return View(quiz);
+        }
+
+        [HttpPost]
+        public ActionResult Index(SrmQuizViewModel quiz)
+        {
+            var comparer = new SrmComparer(Srm.GetMasterSrms());
+            comparer.QuizSrms = quiz.UserSrms;
+            quiz.Message = comparer.IsCorrect() ? "Correct" : "Incorrect";
             return View(quiz);
         }
 

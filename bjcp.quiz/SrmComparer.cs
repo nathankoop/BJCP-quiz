@@ -7,13 +7,13 @@ namespace bjcp.quiz
 {
     public class SrmComparer
     {
-        public IList<Srm> SrmItems;
+        public IList<Srm> QuizSrms;
         public IList<Srm> SrmItemsOrganized { get; private set; }
 
-        public SrmComparer(IList<Srm> organizedSrms)
+        public SrmComparer(IList<Srm> masterSrms)
         {
-            SrmItemsOrganized = organizedSrms;
-            SrmItems = new List<Srm>();
+            SrmItemsOrganized = masterSrms;
+            QuizSrms = new List<Srm>();
         }
 
         public bool IsCorrect()
@@ -21,9 +21,9 @@ namespace bjcp.quiz
             int i=0;
             foreach (var orgSrm in SrmItemsOrganized)
             {
-                if (i >= SrmItems.Count)
+                if (i >= QuizSrms.Count)
                     return false;
-                var srm =  SrmItems.ElementAt(i);
+                var srm =  QuizSrms.ElementAt(i);
                 if (!orgSrm.Equals(srm))
                     return false;
                 i++;

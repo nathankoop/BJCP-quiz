@@ -1,22 +1,16 @@
 ﻿@model bjcp.quiz.Srm
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
+<div class="row-fluid">
+        <div class="span3">
             @Html.EditorFor(model => model.Name)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Low)
-        </div>
-        <div class="editor-field">
+        <div class="span1">
             @Html.DisplayFor(model => model.Low)
+            @Html.HiddenFor(model=>model.Low)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.High)
-        </div>
-        <div class="editor-field">
+        <div class="span1">
             @Html.DisplayFor(model => model.High)
+            @Html.HiddenFor(model=>model.High)
         </div>
+</div>

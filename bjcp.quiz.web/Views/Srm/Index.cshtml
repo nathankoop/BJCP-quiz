@@ -1,4 +1,22 @@
 ﻿@model bjcp.quiz.web.ViewModels.SrmQuizViewModel
+@if(!String.IsNullOrWhiteSpace(Model.Message))
+{
+<div>@Model.Message</div>
+}
+@using (Html.BeginForm())
+{
+    <div class="row-fluid">
+        <div class="span3">
+            @Html.LabelFor(model => model.UserSrms.First().Name)
+        </div>
+        <div class="span1">
+            @Html.LabelFor(model => model.UserSrms.First().Low)
+        </div>
+        <div class="span1">
+            @Html.LabelFor(model => model.UserSrms.First().High)
+        </div>
+    </div>
+    @Html.EditorFor(m => m.UserSrms)
 
-
-@Html.EditorFor(m => m.UserSrms)
+    <input type="submit" value="check" class="btn" />
+}
