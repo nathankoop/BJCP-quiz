@@ -1,16 +1,16 @@
 ﻿@model bjcp.quiz.Srm
 <div class="row-fluid">
-        <div class="span3">
-            @Html.EditorFor(model => model.Name)
-        </div>
-
-        <div class="span1">
-            @Html.DisplayFor(model => model.Low)
-            @Html.HiddenFor(model=>model.Low)
-        </div>
-
-        <div class="span1">
-            @Html.DisplayFor(model => model.High)
-            @Html.HiddenFor(model=>model.High)
-        </div>
+    <div class="span4">
+        @Html.EditorFor(model => model.Name)
+    </div>
+    <div class="span1">
+        @Html.DisplayFor(model => model.Low)
+        @Html.HiddenFor(model => model.Low)
+    </div>
+    <div class="span1">
+        @Html.DisplayFor(model => model.High)
+        @Html.HiddenFor(model => model.High)
+    </div>
+    <div class="span6 visible-desktop">
+        &nbsp;</div>
 </div>
