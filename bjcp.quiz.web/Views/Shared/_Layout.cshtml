@@ -39,9 +39,9 @@
           <a class="brand" href="#">BJCP Quiz</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
-              <li>@Html.ActionLink("SRM Quiz", "Index", "Srm")</li>
-              <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+              <li title="home">@Html.ActionLink("Home", "Index", "Home")</li>
+              <li title="srm-quiz">@Html.ActionLink("SRM Quiz", "Index", "Srm")</li>
+              <li title="contact">@Html.ActionLink("Contact", "Contact", "Home")</li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -70,7 +70,13 @@
     <script src="../assets/js/bootstrap-carousel.js"></script>
     <script src="../assets/js/bootstrap-typeahead.js"></script>*@
 
-  
+  @if (!string.IsNullOrEmpty(ViewBag.CurrentPage)) {         
+	<script type="text/javascript">
+	    $(function () {
+	        $(".nav li[title=@ViewBag.CurrentPage]").addClass("active");
+	    });          
+	</script>
+}
 
 </body>
 </html>

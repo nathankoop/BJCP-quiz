@@ -1,4 +1,8 @@
 ﻿@model bjcp.quiz.web.ViewModels.SrmQuizViewModel
+@{
+    ViewBag.Title = "BJCP Quiz - SRM Quiz";
+    ViewBag.CurrentPage = "srm-quiz";           
+}
 @if(!String.IsNullOrWhiteSpace(Model.Message))
 {
 <div>@Model.Message</div>
