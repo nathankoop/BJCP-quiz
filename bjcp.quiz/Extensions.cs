@@ -11,5 +11,10 @@ namespace bjcp.quiz
         {
             return listToClone.Select(item => (T)item.Clone()).ToList();
         }
+
+        public static string IgnorePunctuation(this string s)
+        {
+            return s.Replace("/"," ").Replace(","," ");
+        }
     }
 }

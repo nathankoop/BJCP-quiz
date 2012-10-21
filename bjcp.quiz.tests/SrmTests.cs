@@ -126,6 +126,15 @@ namespace bjcp.quiz.tests
         }
 
         [Test]
+        public void srm_whenSameNameWithoutPunctuation_returnsTrue()
+        {
+            var srm1 = new Srm("Deep Amber/Light Copper", 10, 14);
+            var srm2 = new Srm("Deep Amber Light Copper", 10, 14);
+
+            Assert.IsTrue(srm1.Equals(srm2));
+        }
+
+        [Test]
         public void srmComparer_whenEmpty_returnsFalse()
         {
             Assert.IsFalse(comparer.IsCorrect());

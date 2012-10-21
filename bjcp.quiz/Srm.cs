@@ -36,8 +36,8 @@ namespace bjcp.quiz
             if (srm.Name == null)
                 return false;
 
-            return 
-                this.Name.ToLowerInvariant() == srm.Name.ToLowerInvariant() &&
+            return
+                this.Name.ToLowerInvariant().IgnorePunctuation() == srm.Name.ToLowerInvariant().IgnorePunctuation() &&
                 this.High == srm.High &&
                 this.Low == srm.Low;
         }
@@ -85,6 +85,7 @@ namespace bjcp.quiz
             quiz.ForEach(srm => srm.Name = "");
             return quiz;
         }
+
     }
 
 
