@@ -1,7 +1,7 @@
 ﻿@model bjcp.quiz.Srm
 <div class="row-fluid">
     <div class="span4">
-        @Html.EditorFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name, new { autocomplete = "off" })
     </div>
     <div class="span1">
         @Html.DisplayFor(model => model.Low)

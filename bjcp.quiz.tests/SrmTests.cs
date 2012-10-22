@@ -79,7 +79,6 @@ namespace bjcp.quiz.tests
             Assert.IsTrue(srm1.Equals(srm2));
         }
 
-
         [Test]
         public void srmComparer_whenIncorrectOrder_returnsFalse()
         {
