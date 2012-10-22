@@ -134,6 +134,14 @@ namespace bjcp.quiz.tests
         }
 
         [Test]
+        public void srm_whenSameNameWithoutPunctuation_returnsTrue2()
+        {
+            var srm1 = new Srm("black, opaque", 40);
+            var srm2 = new Srm("black opaque", 40);
+            Assert.IsTrue(srm1.Equals(srm2));
+        }
+
+        [Test]
         public void srmComparer_whenEmpty_returnsFalse()
         {
             Assert.IsFalse(comparer.IsCorrect());

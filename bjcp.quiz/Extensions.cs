@@ -14,7 +14,7 @@ namespace bjcp.quiz
 
         public static string IgnorePunctuation(this string s)
         {
-            return s.Replace("/"," ").Replace(","," ");
+            return s.Replace("/"," ").Replace(","," ").Replace("  ", " ").Trim();
         }
     }
 }
