@@ -16,7 +16,7 @@ namespace bjcp.quiz.web.Controllers
         public ActionResult Index()
         {
             var quiz = new SrmQuizViewModel();
-            quiz.UserSrms = Srm.GetQuiz().AsView;
+            quiz.UserSrms = Srm.GetQuiz();
             quiz.Message = "";
             return View(quiz);
         }
