@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using bjcp.quiz.web.ViewModels;
+using AutoMapper;
 
 namespace bjcp.quiz.web.Controllers
 {
@@ -15,7 +16,7 @@ namespace bjcp.quiz.web.Controllers
         public ActionResult Index()
         {
             var quiz = new SrmQuizViewModel();
-            quiz.UserSrms = Srm.GetQuiz();
+            quiz.UserSrms = Srm.GetQuiz().AsView;
             quiz.Message = "";
             return View(quiz);
         }
