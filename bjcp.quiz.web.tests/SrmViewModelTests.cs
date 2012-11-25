@@ -13,9 +13,10 @@ namespace bjcp.quiz.web.tests
         [Test]
         public void SrmViewModel_setup_hasPropertiesSet()
         {
-            var srm = new Srm("Straw", 2, 3);
+            var srm = new Srm(1, "Straw", 2, 3);
             var srmVm = new SrmViewModel(srm);
 
+            Assert.AreEqual(1, srmVm.Id);
             Assert.AreEqual("Straw", srmVm.Name);
             Assert.AreEqual(2, srmVm.Low);
             Assert.AreEqual(3, srmVm.High);
@@ -26,7 +27,7 @@ namespace bjcp.quiz.web.tests
         [Test]
         public void SrmViewModel_setupCorrectly_Succeeds()
         {
-            var userSrm = new Srm("Straw", 2,3);
+            var userSrm = new Srm(1, "Straw", 2,3);
             var srmVm = new SrmViewModel(userSrm);
 
             Assert.IsTrue(srmVm.Correct);
@@ -36,7 +37,7 @@ namespace bjcp.quiz.web.tests
         [Test]
         public void SrmViewModel_setupIncorrectly_Fails()
         {
-            var srm = new Srm("Straw", 2, 3);
+            var srm = new Srm(1, "Straw", 2, 3);
             var srmVm = new SrmViewModel(srm);
 
             Assert.IsFalse(srmVm.Correct);
